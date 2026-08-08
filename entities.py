@@ -4,7 +4,9 @@ m.options.legacy_dict_return_values = True
 
 tp=''
 ds = False
-num = sys.argv[1]
+num = 0
+if len(sys.argv)==1:
+    num = 'all'
 if len(sys.argv)>=3:
     search = sys.argv[2]
     ds=True
