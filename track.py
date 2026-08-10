@@ -3,6 +3,7 @@ import sys
 from keyboard import is_pressed
 from time import sleep
 import math
+m.msf.add_job()
 m.options.legacy_dict_return_values = True
 entity = sys.argv[1]
 ent_num = 1
@@ -71,3 +72,4 @@ else:
         sleep(0.5)
         val+=1
 
+m.msf.add_job(-1)
