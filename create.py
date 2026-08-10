@@ -1,5 +1,6 @@
 import m
 import sys
+from time import sleep
 
 entity = sys.argv[1]
 amount = int(sys.argv[2])
@@ -35,3 +36,5 @@ else:
     while val!=amount:
         m.execute(f'/summon {entity}')
         val+=1
+    m.execute('gamemode survival @a')
+    m.execute('/gamemode c @s')

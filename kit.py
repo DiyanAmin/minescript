@@ -35,9 +35,7 @@ if kind=='wemmbu' or kind=='w':
 else:
     items_per_row = {
         'totem_of_undying':1,
-        'firework_rocket':64,
-        'golden_carrot':64,
-        'golden_apple':64,
+        'firework_rocket':192,
         'enchanted_golden_apple':64,
         'ender_pearl':32,
         'wind_charge':128

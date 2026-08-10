@@ -2,6 +2,7 @@ import m
 import sys
 from keyboard import is_pressed
 from time import sleep
+import math
 m.options.legacy_dict_return_values = True
 entity = sys.argv[1]
 ent_num = 1
@@ -11,11 +12,38 @@ if len(sys.argv)>2:
 
 entities=m.entities()
 
-names={}
-for h in entities:
-    name = h['name']
-    cords = h['position']
-    names[name] = cords
+names = {h['name']: h['position'] for h in entities}
+
+def distance(pos1, pos2):
+    return math.sqrt(
+        (pos1[0] - pos2[0])**2 +
+        (pos1[1] - pos2[1])**2 +
+        (pos1[2] - pos2[2])**2
+    )
+
+if entity == "near":
+    while not is_pressed('t'):
+        entities = m.entities()
+        # keep both name and type
+        names = {h['name']: (h['position'], h['type']) for h in entities}
+
+        player_pos = m.player_position()  # [x, y, z]
+
+        nearby = []
+        for name, (cords, etype) in names.items():
+            if etype == "entity.minecraft.player" and name!=m.player_name() :  # ✅ only players
+                if distance(cords, player_pos) <= 50:
+                    x, y, z = cords
+                    dist = round(distance(cords, player_pos), 1)
+                    nearby.append(f"{name} [{dist} blocks]")
+
+        if nearby:
+            m.echo("\n\n\nNearby players:\n" + "\n".join(nearby) + "\n\n\n")
+            
+        if is_pressed('t'):
+            break
+
+        sleep(0.5)
 
 if ent_num>2:
     if sys.argv[2]!='look':
@@ -33,7 +61,7 @@ if ent_num>2:
         while not is_pressed('t'):
             m.echo(f'\n\n\n{entity} is at {names[entity]}\n\n\n')
             x,y,z = names[entity][0] , names[entity][1] , names[entity][2]
-            m.player_look_at(x,y,z)
+            m.player_look_at(x,(y+1),z)
             sleep(0.01)
 
 else:
