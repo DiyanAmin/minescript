@@ -15,7 +15,7 @@ m.execute('give @s firework_rocket 64')
 m.execute('give @s elytra[minecraft:unbreakable={}]')
 
 #Amrmour and extras
-m.execute('\give_armour')
+m.execute('\give armour')
 m.execute('/item replace entity @s weapon.offhand with shield[minecraft:unbreakable={}]')
 
 #Rest of kit

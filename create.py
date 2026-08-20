@@ -3,7 +3,7 @@ import sys
 from time import sleep
 
 entity = sys.argv[1]
-amount = int(sys.argv[2])
+amount = sys.argv[2]
 player_list = [
     'Wemmbu',
     'ParrotX2',
@@ -20,7 +20,18 @@ player_list = [
     'cubicmeter',
     'JumperWho',
     'yungyx',
-    'LuigiToan']
+    'LuigiToan',
+    'Twirps',
+    'Found2',
+    'Derapchu',
+    'Pangi',
+    'Mapicc',
+    'baconwaffles'
+    ]
+if amount=='all':
+    amount = len(player_list)
+else:
+    amount=int(amount)
 
 if entity=='players' or entity=='$':
 
@@ -29,8 +40,9 @@ if entity=='players' or entity=='$':
 
     for i in player_list:
         m.execute(f'/player {i} spawn')
-    if amount==15 and entity=='$':
-        m.execute(r"\give_armour $")
+    if amount==len(player_list) and entity=='$':
+        sleep(1)
+        m.execute(r"\give armour $")
 else:
     val = 0
     while val!=amount:
