@@ -8,14 +8,14 @@ kind = sys.argv[1]
 if kind=='wemmbu' or kind=='w':
     m.echo('Giving Wemmbu kit...')
 else:
-    m.echo('Giving Base Elytra-Mace Kit')
+    m.echo('\n\n\n\n\nGiving Base Elytra-Mace Kit')
 
-m.execute("give @s mace[minecraft:enchantments={breach:4,density:5,wind_burst:3},minecraft:unbreakable={},minecraft:custom_name='Death']")
+m.execute("give @s mace[minecraft:enchantments={breach:4,density:5,wind_burst:3},minecraft:unbreakable={},minecraft:custom_name='Reaper of Souls']")
 m.execute('give @s firework_rocket 64')
 m.execute('give @s elytra[minecraft:unbreakable={}]')
 
 #Amrmour and extras
-m.execute('\give armour')
+m.execute(r'\give armour $ $')
 m.execute('/item replace entity @s weapon.offhand with shield[minecraft:unbreakable={}]')
 
 #Rest of kit
@@ -42,4 +42,4 @@ else:
     }
     row_wise_give(items_per_row)
 
-m.echo('\n\nKit Given.\n\n')
+m.echo('\n\nKit Given.\n\n\n\n\n\n\n')

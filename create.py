@@ -26,7 +26,17 @@ player_list = [
     'Derapchu',
     'Pangi',
     'Mapicc',
-    'baconwaffles'
+    'baconwaffles0',
+    'Spongs',
+    'Only_A_Squid',
+    'leekleek',
+    'Infume',
+    'Reddoons',
+    'CaptainSparklez',
+    'SB737',
+    'ClownPierce',
+    'FerreMC',
+    'BranzyCraft'
     ]
 if amount=='all':
     amount = len(player_list)
@@ -42,11 +52,12 @@ if entity=='players' or entity=='$':
         m.execute(f'/player {i} spawn')
     if amount==len(player_list) and entity=='$':
         sleep(1)
-        m.execute(r"\give armour $")
+        for i in player_list:
+            m.execute(r'\give armour '+i)
 else:
     val = 0
     while val!=amount:
         m.execute(f'/summon {entity}')
         val+=1
     m.execute('gamemode survival @a')
-    m.execute('/gamemode c @s')
+    m.execute('gamemode creative @s')

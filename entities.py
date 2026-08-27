@@ -19,23 +19,31 @@ entities_list = []
 for i in entities:
     entities_list.append(i['name'])
 
+if len(sys.argv)==2:
+    m.echo(len(entities_list))
+
 if num=='all':
     m.echo(entities_list)
 
 elif ds:
     names = {}
-    if search in entities_list:
+    if search.capitalize() in entities_list:
         for h in entities:
             name = h['name']
             cords = h['position']
             names[name] = cords
-        m.echo(f'{search} is at {names[search]}')
+        m.echo(f'{search} is at {names[search.capitalize()]}')
 
         if tp!='':
-            x = names[search][0]
-            y = names[search][1]
-            z = names[search][2]
-            m.execute(f'/tp @s {x} {y} {z}')
+            if tp == '$':
+                x = names[search][0]
+                y = names[search][1]
+                z = names[search][2]
+                m.execute(f'/tp @s {x} {y} {z}')
+            elif tp=='bring':
+                m.execute(f'/tp @e[type={search}] @s')
+    else:
+        m.echo('404 not found.')
 
 else:
     try:

@@ -29,5 +29,3 @@ if display_x=='inv':
         val+=1
 
     m.echo(f'No. of Items: {len(items)}\nAvailable slots: {41-len(items)}\nItems:\n\n{items}')
-
-        

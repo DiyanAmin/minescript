@@ -60,10 +60,14 @@ if ent_num>2:
             val+=1
     elif sys.argv[2]=='look':
         while not is_pressed('t'):
-            m.echo(f'\n\n\n{entity} is at {names[entity]}\n\n\n')
-            x,y,z = names[entity][0] , names[entity][1] , names[entity][2]
-            m.player_look_at(x,(y+1),z)
-            sleep(0.01)
+            try:
+                m.echo(f'\n\n\n{entity} is at {names[entity]}\n\n\n')
+                x,y,z = names[entity][0] , names[entity][1] , names[entity][2]
+                m.player_look_at(x,(y+1),z)
+                sleep(0.01)
+            except KeyError:
+                m.echo('Entity not found (404)')
+                break
 
 else:
     val=1

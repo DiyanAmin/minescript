@@ -17,32 +17,34 @@ players_file_data = ''
 for i in ent_data:
     players_file_data+=(i+',')
 
-if sys.argv[1] == 'refresh':
-    players = m.get_players()
-    ent_data = {}
-    names = []
-    cords = []
+if len(sys.argv) == 2:
+    if sys.argv[1]=='refresh':
+        players = m.get_players()
+        ent_data = {}
+        names = []
+        cords = []
 
-    val = 0
-    while val!=len(players):
-        ent_data[players[val]['name']] = players[val]['position']
-        val+=1
+        val = 0
+        while val!=len(players):
+            ent_data[players[val]['name']] = players[val]['position']
+            val+=1
 
-    ent_data.pop('Hades18369')
-    players_file_data = ''
-    for i in ent_data:
-        players_file_data+=(i+',')
+        ent_data.pop('Hades18369')
+        players_file_data = ''
+        for i in ent_data:
+            players_file_data+=(i+',')
 
-    with open('players.txt','w') as f:
-        f.write(players_file_data)
-    
-    m.echo('Refreshed Player List')
+        with open('players.txt','w') as f:
+            f.write(players_file_data)
+        
+        m.echo('Refreshed Player List')
 
 if len(sys.argv)==1:
     player_no = 1
     for e in ent_data:
         m.echo(f'{player_no}. {e} is at {ent_data[e]}\n')
         player_no+=1
+    m.echo('\n\nDone\n\n')
 elif len(sys.argv)==2:
     for e in ent_data:
         if e==sys.argv[1]:

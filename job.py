@@ -31,4 +31,4 @@ elif func=='kill':
         m.echo(f'Killed job {val}')
         m.msf.add_job(-1)
         val+=1
-    m.echo('Killed all jobs.')
+    m.echo('Killed all jobs.base set')
