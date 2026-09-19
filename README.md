@@ -6,4 +6,4 @@ Not much to be here. First of all, in the directory (folder) where your minescri
 - Number of jobs running
 - Highest job ID
 
-respectively. minescript doesn't use these, my msf.py and job.py files use this as to communicate with other files, specifically refresh.py because that file creates a TON of jobs so yeah.
+respectively. minescript doesn't use these, my `msf.py` and `job.py` files use this as to communicate with other files, specifically `refresh.py` because that file creates a TON of jobs so yeah.
