@@ -1,6 +1,7 @@
 import m
 import sys
 from keyboard import is_pressed
+from time import sleep
 
 if len(sys.argv)==1: #No arg provided
     railgun_type = 'snowball'
@@ -15,6 +16,10 @@ while not is_pressed('t'): #While t key not pressed
         m.execute('give @s snowball 1')
         m.player_press_use(True)
         continue
+    elif railgun_type == 'load':
+        m.player_press_use(True)
+        sleep(0.1)
+        m.player_press_use(False)
     else:
         m.execute(f'give @s {railgun_type} 1')
         m.player_press_use(True)

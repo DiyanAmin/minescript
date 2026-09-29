@@ -54,6 +54,8 @@ if entity=='players' or entity=='$':
         sleep(1)
         for i in player_list:
             m.execute(r'\give armour '+i)
+        sleep(1)
+        m.execute(r'/item replace entity Spongs armor.legs with air')
 else:
     val = 0
     while val!=amount:

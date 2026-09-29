@@ -1,4 +1,6 @@
 import m
+import sys
+
 def display(msg):
     m.echo(f'\n\n\n\n{msg}\n\n\n\n')
 
@@ -77,3 +79,99 @@ def add_job(amt:int=1):
         }
     )
 #------------------------------------------------
+
+#Complex Data retrieving and storing functions------------
+
+from diyanLib.data import json_handler #See https://github.com/DiyanAmin/diyanLib
+
+def write_json(data:dict|str,dictionary:int=1):
+    '''
+    Writes complex data to a json file.
+    
+    :param data: The data. Can be dictionary or string.
+    :type data: dict or str
+    :param dictionary: Dictionary number (default 1).
+    :type dictionary: int
+    '''
+
+    if dictionary!=-1:
+        json_handler(f'jsons\\gd{dictionary}').save(data)
+    elif dictionary==-1:
+        json_handler('jsons\\minescript_data').save(data)
+    else:
+        m.echo('Invalid dictionary number')
+
+def get_json(dict_num:str):
+    '''
+    Gets complex stored data.
+    
+    :param dict_num: Dictionary number
+    :type dict_num: str
+
+    :return: Dictionary of the data
+    :rtype: dict
+    '''
+    if dict_num!=-1:
+        datum = json_handler(f'jsons\\gd{dict_num}').get()
+    elif dict_num==-1:
+        datum = json_handler(f'jsons\\minescript_data').get()
+    else:
+        m.echo('Invalid dictionary number')
+        datum='3RR0R'
+    return datum
+
+#--------------------------------------------------------------------------------------
+
+
+
+#Block/Entity Scanner
+def scan(filter:bool=False,filter_list:list=[],search:bool=False,search_list:list=[],type:str='blocks',radius:int=50):
+    '''
+
+    Scans for nearby blocks or entities
+    
+    :param filter: Enable filter or not. (Disabled by default) Filtered items are ignored in scan
+    :type filter: bool
+    :param filter_list: List or blocks/entities to filter out.
+    :type filter_list: list
+    :param search: Search for specific entities/blocks
+    :type search: bool
+    :param search_list: List of items to search for.
+    :type search_list: list
+    :param type: Scan type. blocks/entities
+    :type type: str
+    :param radius: Radius of scan. (Only applicable for blocks)
+    :type radius: str
+    '''
+
+    x,y,z = get_pos()
+
+
+    if type=='blocks':
+        block_list = []
+        radius_1 = [
+            [x+1,y,z],
+            [x,y,z-1],
+            [x-1,y,z],
+            [x,y,z+1]
+        ]
+
+        return radius_1,m.getblocklist([i for i in radius_1])
+
+    
+#ULILITY FUNCTION(S) (mainly for comfort)
+def get_args():
+    return len(sys.argv)-1 #Since we dont count file name
+
+def get_pos():
+    return int(m.player_position()[0]),int(m.player_position()[1])-1,int(m.player_position()[2])
+
+
+#Init Funcs
+
+write_json(
+    {
+        "username":m.player_name(),
+        "bridging_cords":[-120,-22,178]
+    },-1
+)

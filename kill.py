@@ -17,6 +17,9 @@ elif target=='orb':
 
 elif target=='fake':
     cide('mannequin')
+    
+elif target=='a':
+    cide('arrow')
 
 else:
     cide(target)
