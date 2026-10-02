@@ -30,8 +30,10 @@ m.execute("give @s netherite_axe[minecraft:unbreakable={},minecraft:enchantments
 #Orbitals
 
 if kind=='wemmbu' or kind=='w':
-    m.execute('/orbitalstrike stab 18')
-    m.execute('/orbitalstrike nuke 9')
+    for i in range(18):
+        m.execute('/function orbital:give/stab_aim_3')
+    for i in range(9):
+        m.execute('/function orbital:give/nuke_aim_3')
 else:
     items_per_row = {
         'totem_of_undying':1,

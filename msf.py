@@ -128,7 +128,7 @@ def get_json(dict_num:str):
 def scan(filter:bool=False,filter_list:list=[],search:bool=False,search_list:list=[],type:str='blocks',radius:int=50):
     '''
 
-    Scans for nearby blocks or entities
+    Scans for nearby blocks or entities (WIP)
     
     :param filter: Enable filter or not. (Disabled by default) Filtered items are ignored in scan
     :type filter: bool
@@ -161,7 +161,7 @@ def scan(filter:bool=False,filter_list:list=[],search:bool=False,search_list:lis
     
 #ULILITY FUNCTION(S) (mainly for comfort)
 def get_args():
-    return len(sys.argv)-1 #Since we dont count file name
+    return len(sys.argv)-1 #Since we dont count file path
 
 def get_pos():
     return int(m.player_position()[0]),int(m.player_position()[1])-1,int(m.player_position()[2])
